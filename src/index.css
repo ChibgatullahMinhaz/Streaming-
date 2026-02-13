@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 220 25% 10%;
+
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 170 75% 41%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 10% 30%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 92%;
+    --sidebar-accent-foreground: 220 25% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 262 83% 58%;
+
+    /* Custom tokens */
+    --live-red: 0 84% 55%;
+    --live-red-foreground: 0 0% 100%;
+    --online-green: 142 71% 45%;
+    --stream-surface: 220 20% 97%;
+    --stream-overlay: 220 25% 10% / 0.6;
+    --gradient-brand: linear-gradient(135deg, hsl(262 83% 58%), hsl(200 90% 55%));
+    --gradient-brand-hover: linear-gradient(135deg, hsl(262 83% 52%), hsl(200 90% 48%));
+    --gradient-accent: linear-gradient(135deg, hsl(170 75% 41%), hsl(200 90% 55%));
+    --shadow-glow: 0 0 30px hsl(262 83% 58% / 0.15);
+    --shadow-card: 0 1px 3px hsl(220 25% 10% / 0.04), 0 4px 12px hsl(220 25% 10% / 0.06);
+  }
+
+  .dark {
+    --background: 222 28% 7%;
+    --foreground: 220 15% 90%;
+
+    --card: 222 25% 10%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 222 25% 10%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 262 83% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 20% 16%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 222 20% 14%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 170 75% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 16%;
+    --input: 222 20% 16%;
+    --ring: 262 83% 62%;
+
+    --sidebar-background: 222 28% 8%;
+    --sidebar-foreground: 220 10% 65%;
+    --sidebar-primary: 262 83% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 20% 14%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 222 20% 16%;
+    --sidebar-ring: 262 83% 62%;
+
+    --live-red: 0 84% 58%;
+    --live-red-foreground: 0 0% 100%;
+    --online-green: 142 71% 50%;
+    --stream-surface: 222 25% 12%;
+    --stream-overlay: 0 0% 0% / 0.7;
+    --gradient-brand: linear-gradient(135deg, hsl(262 83% 62%), hsl(200 90% 55%));
+    --gradient-brand-hover: linear-gradient(135deg, hsl(262 83% 55%), hsl(200 90% 48%));
+    --gradient-accent: linear-gradient(135deg, hsl(170 75% 45%), hsl(200 90% 55%));
+    --shadow-glow: 0 0 40px hsl(262 83% 62% / 0.2);
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.2), 0 4px 12px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer utilities {
+  .gradient-brand {
+    background: var(--gradient-brand);
+  }
+  .gradient-brand-hover:hover {
+    background: var(--gradient-brand-hover);
+  }
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .glass {
+    backdrop-filter: blur(16px);
+    background: hsl(var(--card) / 0.8);
+  }
+  .live-pulse {
+    animation: livePulse 2s ease-in-out infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
